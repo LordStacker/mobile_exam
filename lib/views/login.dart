@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'newuser.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -102,7 +103,12 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: (){print('test');},
+                          onPressed: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => NewUser()),
+                            );
+                          },
                           child: Text(
                             'New User?',
                             style: TextStyle(
