@@ -30,7 +30,7 @@ class Login extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         SvgPicture.asset(
-                          'assets/user.svg',
+                          'assets/svgs/user.svg',
                           width: 50,
                           height: 50,
                         ),
@@ -59,7 +59,11 @@ class Login extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Icon(Icons.lock),
+                    SvgPicture.asset(
+                    'assets/svgs/Pacifier.svg',
+                      width: 50,
+                      height: 50,
+                    ),
                         Container(
                           width: 150,
                           height: 50,
