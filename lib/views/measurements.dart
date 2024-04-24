@@ -189,7 +189,7 @@ class Measurements extends StatelessWidget {
       ),
       bottomNavigationBar: Container( // This is the footer
         color: Color(0xff211951),
-        height: 60.0,
+        height: 63.0,
         alignment: Alignment.center,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

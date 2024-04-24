@@ -11,7 +11,7 @@ class Alerts extends StatelessWidget {
       backgroundColor: Color(0xffF0F3FF),
       appBar: AppBar(
           backgroundColor: Color(0xff211951),
-          title: Text('Environment Measurements'),
+          title: Text('Alerts'),
           titleTextStyle: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -84,11 +84,16 @@ class Alerts extends StatelessWidget {
       ),
       bottomNavigationBar: Container( // This is the footer
           color: Color(0xff211951),
-          height: 60.0,
+          height: 63.0,
           alignment: Alignment.center,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
+              SvgPicture.asset(
+                'assets/svgs/meter.svg',
+                width: 30,
+                height: 30,
+              ),
               Container(
                 padding: EdgeInsets.all(3),
                 decoration: BoxDecoration(
@@ -99,21 +104,17 @@ class Alerts extends StatelessWidget {
                   ),
                 ),
                 child: SvgPicture.asset(
-                  'assets/svgs/meter.svg',
-                  width: 30,
-                  height: 30,
+                  'assets/svgs/Bell.svg',
+                  width: 40,
+                  height: 40,
                 ),
-              ),
-              SvgPicture.asset(
-                'assets/svgs/Bell.svg',
-                width: 40,
-                height: 40,
               ),
               SvgPicture.asset(
                 'assets/svgs/Settings.svg',
                 width: 30,
                 height: 30,
               ),
+
             ],
           )
 
