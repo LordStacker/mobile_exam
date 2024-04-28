@@ -1,5 +1,7 @@
+import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TemperatureWidget extends StatefulWidget {
@@ -10,6 +12,29 @@ class TemperatureWidget extends StatefulWidget {
 }
 
 class _TemperatureWidgetState extends State<TemperatureWidget> {
+  int retrievedTemperatureLevel = 0; // This will be updated with the actual temperature level
+  late Timer _timer;//Timer to get the temperature level every n amounts of time
+
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) => getTemperatureLevel());
+  } // This will get the temperature level every second
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
+  } // This will cancel the timer when the widget is disposed
+
+
+  void getTemperatureLevel() async {
+    Response response = await get(Uri.parse('http://www.randomnumberapi.com/api/v1.0/random?min=0&max=99&count=1'));
+    List data = jsonDecode(response.body);
+    retrievedTemperatureLevel = data[0];
+    setState(() {});
+  } // This will get the temperature level from the API
+
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -57,7 +82,7 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Text(
-                                '26 °C',
+                                '$retrievedTemperatureLevel °C',
                                 style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
