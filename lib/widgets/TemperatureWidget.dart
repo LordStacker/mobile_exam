@@ -76,17 +76,20 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
                               height: 50,
                             ),
                             Container(
+                              width: 70,
                               padding: EdgeInsets.all(7),
                               decoration: BoxDecoration(
                                 color: Color(0xff615B85),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Text(
-                                '$retrievedTemperatureLevel °C',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xffF0F3FF),
+                              child: Center(
+                                child: Text(
+                                  '$retrievedTemperatureLevel °C',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xffF0F3FF),
+                                  ),
                                 ),
                               ),
                             ),

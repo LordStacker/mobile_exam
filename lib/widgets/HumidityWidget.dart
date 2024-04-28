@@ -77,17 +77,20 @@ class _HumitdityWidgetState extends State<HumitdityWidget> {
                               height: 40,
                             ),
                             Container(
+                              width: 120,
                               padding: EdgeInsets.all(7),
                               decoration: BoxDecoration(
                                 color: Color(0xff615B85),
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              child: Text(
-                                '$retrievedHumidityLevel',
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Color(0xffF0F3FF),
+                              child: Center(
+                                child: Text(
+                                  '$retrievedHumidityLevel',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xffF0F3FF),
+                                  ),
                                 ),
                               ),
                             ),
