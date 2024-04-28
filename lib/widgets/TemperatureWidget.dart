@@ -32,7 +32,9 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
     Response response = await get(Uri.parse('http://www.randomnumberapi.com/api/v1.0/random?min=0&max=99&count=1'));
     List data = jsonDecode(response.body);
     retrievedTemperatureLevel = data[0];
-    setState(() {});
+    if(mounted){
+      setState(() {});
+    }
   } // This will get the temperature level from the API
 
   @override

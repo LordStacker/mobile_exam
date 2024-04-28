@@ -63,15 +63,25 @@ class Measurements extends StatelessWidget {
                 height: 30,
               ),
             ),
-            SvgPicture.asset(
-              'assets/svgs/Bell.svg',
-              width: 40,
-              height: 40,
+            TextButton(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/alerts');
+              },
+              child: SvgPicture.asset(
+                'assets/svgs/Bell.svg',
+                width: 40,
+                height: 40,
+              ),
             ),
-            SvgPicture.asset(
-              'assets/svgs/Settings.svg',
-              width: 30,
-              height: 30,
+            TextButton(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/settings');
+              },
+              child: SvgPicture.asset(
+                'assets/svgs/Settings.svg',
+                width: 30,
+                height: 30,
+              ),
             ),
           ],
         )

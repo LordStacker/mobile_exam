@@ -97,15 +97,25 @@ class Settings extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              SvgPicture.asset(
-                'assets/svgs/meter.svg',
-                width: 30,
-                height: 30,
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/');
+                },
+                child: SvgPicture.asset(
+                  'assets/svgs/meter.svg',
+                  width: 30,
+                  height: 30,
+                ),
               ),
-              SvgPicture.asset(
-                'assets/svgs/Bell.svg',
-                width: 40,
-                height: 40,
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/alerts');
+                },
+                child: SvgPicture.asset(
+                  'assets/svgs/Bell.svg',
+                  width: 40,
+                  height: 40,
+                ),
               ),
               Container(
                 padding: EdgeInsets.all(3),

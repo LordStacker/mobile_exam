@@ -33,7 +33,9 @@ class _SoundWidgetState extends State<SoundWidget> {
     Response response = await get(Uri.parse('http://www.randomnumberapi.com/api/v1.0/random?min=0&max=99&count=1'));
     List data = jsonDecode(response.body);
     retrievedSoundLevel = data[0];
-    setState(() {});
+    if(mounted){
+      setState(() {});
+    }
   } // This will get the sound level from the API
 
 

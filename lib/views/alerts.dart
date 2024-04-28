@@ -89,10 +89,15 @@ class Alerts extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              SvgPicture.asset(
-                'assets/svgs/meter.svg',
-                width: 30,
-                height: 30,
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/');
+                },
+                child: SvgPicture.asset(
+                  'assets/svgs/meter.svg',
+                  width: 30,
+                  height: 30,
+                ),
               ),
               Container(
                 padding: EdgeInsets.all(3),
@@ -109,10 +114,15 @@ class Alerts extends StatelessWidget {
                   height: 40,
                 ),
               ),
-              SvgPicture.asset(
-                'assets/svgs/Settings.svg',
-                width: 30,
-                height: 30,
+              TextButton(
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/settings');
+                },
+                child: SvgPicture.asset(
+                  'assets/svgs/Settings.svg',
+                  width: 30,
+                  height: 30,
+                ),
               ),
 
             ],
