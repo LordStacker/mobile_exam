@@ -100,7 +100,6 @@ class Alerts extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.all(3),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
