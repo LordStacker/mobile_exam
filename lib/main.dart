@@ -5,5 +5,5 @@ import 'views/alerts.dart';
 import 'views/settings.dart';
 
 void main()  => runApp(MaterialApp(
-  home: Settings(),
+  home: Measurements(),
 ));

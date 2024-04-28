@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../widgets/SoundWidget.dart';
+import '../widgets/TemperatureWidget.dart';
+import '../widgets/HumidityWidget.dart';
+
 
 class Measurements extends StatelessWidget {
   const Measurements({super.key});
@@ -26,159 +30,9 @@ class Measurements extends StatelessWidget {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Container(
-                      height: 120,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        color: Color(0xff211951),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child:
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Text(
-                              'Room Sound Level',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xffF0F3FF),
-                              ),
-                            ),
-
-                            Container(
-                              width: 250,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  SvgPicture.asset(
-                                    'assets/svgs/volume.svg',
-                                    width: 40,
-                                    height: 40,
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(7),
-                                    decoration: BoxDecoration(
-                                      color: Color(0xff615B85),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Text(
-                                      '70 dB',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xffF0F3FF),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ]
-                        ),
-                    ),
-                    Container(
-                      height: 120,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        color: Color(0xff211951),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child:
-                      Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Text(
-                              'Room Temperature',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xffF0F3FF),
-                              ),
-                            ),
-
-                            Container(
-                              width: 250,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  SvgPicture.asset(
-                                    'assets/svgs/Thermometer.svg',
-                                    width: 50,
-                                    height: 50,
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(7),
-                                    decoration: BoxDecoration(
-                                      color: Color(0xff615B85),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Text(
-                                      '26 °C',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xffF0F3FF),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ]
-                      ),
-                    ),
-                    Container(
-                      height: 120,
-                      width: 300,
-                      decoration: BoxDecoration(
-                        color: Color(0xff211951),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child:
-                      Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: <Widget>[
-                            Text(
-                              'Room Humidity',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xffF0F3FF),
-                              ),
-                            ),
-
-                            Container(
-                              width: 250,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: <Widget>[
-                                  SvgPicture.asset(
-                                    'assets/svgs/Humidity.svg',
-                                    width: 40,
-                                    height: 40,
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.all(7),
-                                    decoration: BoxDecoration(
-                                      color: Color(0xff615B85),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Text(
-                                      'Normal',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xffF0F3FF),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ]
-                      ),
-                    ),
+                    SoundWidget(),
+                    TemperatureWidget(),
+                    HumitdityWidget(),
 
 
                   ]
