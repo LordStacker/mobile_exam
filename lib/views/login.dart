@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'newuser.dart';
+import '../services/WebSocketService.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  String username = '';
+  String password = '';
+
+  Future<void> signIn() async {
+    WebSocketService().signIn(username, password);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +52,9 @@ class Login extends StatelessWidget {
                           width: 150,
                           height: 50,
                           child: TextField(
+                            onChanged: (String value) {
+                              username = value;
+                            },
                             decoration: InputDecoration(
                               fillColor: Color(0xff211951),
                               filled: true,
@@ -69,12 +85,15 @@ class Login extends StatelessWidget {
                           width: 150,
                           height: 50,
                           child: TextField(
+                            onChanged: (String value) {
+                              password = value;
+                            },
+                            obscureText: true,
                             decoration: InputDecoration(
                               fillColor: Color(0xff211951),
                               filled: true,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(10),),
-
                               labelText: 'Password',
                               labelStyle: TextStyle(
                                 color: Color(0xffF0F3FF),
@@ -91,7 +110,9 @@ class Login extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         TextButton(
-                          onPressed: (){print('ass');},
+                          onPressed: (){
+                            signIn();
+                          },
                           child: Text(
                             'Log In',
                             style: TextStyle(

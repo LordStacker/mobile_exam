@@ -99,7 +99,7 @@ class Settings extends StatelessWidget {
             children: <Widget>[
               TextButton(
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/');
+                  Navigator.pushReplacementNamed(context, '/measurements');
                 },
                 child: SvgPicture.asset(
                   'assets/svgs/meter.svg',
