@@ -38,6 +38,9 @@ class WebSocketService {
       case 'ServerDeniesSignIn':
         print("Server denies sign in");
         break;
+      default:
+        print("Unknown event type: ${event['eventType']}");
+        break;
     // Handle other event types...
     }
   }
