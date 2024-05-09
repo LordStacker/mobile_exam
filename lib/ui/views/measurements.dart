@@ -33,8 +33,6 @@ class Measurements extends StatelessWidget {
                     SoundWidget(),
                     TemperatureWidget(),
                     HumitdityWidget(),
-
-
                   ]
               ),
             ),

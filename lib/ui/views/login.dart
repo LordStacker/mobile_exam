@@ -17,18 +17,32 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    // Bloc provider to provide the SignInBloc to the widget tree and listen for state changes
     return BlocProvider(
       create: (context) => SignInBloc(),
         child: BlocConsumer<SignInBloc, SignInState>(
-        listener: (context, state) {
+        listener: (context, state) { // This listener listens for state changes and acts accordingly
       state.map(
         initial: (_) {},
-        loading: (_) {},
+        loading: (_) {
+          // Show loading icon over entire screen
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (BuildContext context) {
+              return Center(
+                child: CircularProgressIndicator(color: Color(0xff15F5BA),),
+              );
+            },
+          );
+        },
         success: (_) {
           // Navigate to the next page
           Navigator.pushReplacementNamed(context, '/measurements');
         },
         failure: (_) {
+          // Close the loading icon
+          Navigator.of(context).pop();
           // Show an error message
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
