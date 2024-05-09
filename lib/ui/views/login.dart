@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'newuser.dart';
-import '../../bloc/sign_in_bloc.dart';
+import '../../bloc/signin/sign_in_bloc.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
