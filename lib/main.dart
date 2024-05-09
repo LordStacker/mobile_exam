@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'views/login.dart';
-import 'views/measurements.dart';
-import 'views/alerts.dart';
-import 'views/settings.dart';
-import 'views/newuser.dart';
+import 'ui/views/login.dart';
+import 'ui/views/measurements.dart';
+import 'ui/views/alerts.dart';
+import 'ui/views/settings.dart';
+import 'ui/views/newuser.dart';
 
 void main()  => runApp(MaterialApp(
   initialRoute: '/login', // This is the route that the app will start on

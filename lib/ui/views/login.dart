@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'newuser.dart';
-import '../services/WebSocketService.dart';
+import '../../bloc/sign_in_bloc.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -14,13 +15,31 @@ class _LoginState extends State<Login> {
   String username = '';
   String password = '';
 
-
-  Future<void> signIn() async {
-    WebSocketService().signIn(username, password);
-  }
-
   @override
   Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => SignInBloc(),
+        child: BlocConsumer<SignInBloc, SignInState>(
+        listener: (context, state) {
+      state.map(
+        initial: (_) {},
+        loading: (_) {},
+        success: (_) {
+          // Navigate to the next page
+          Navigator.pushReplacementNamed(context, '/measurements');
+        },
+        failure: (_) {
+          // Show an error message
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Login failed'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        },
+      );
+    },
+    builder: (context, state) {
     return Scaffold(
       backgroundColor: Color(0xffF0F3FF),
       appBar: AppBar(
@@ -112,7 +131,7 @@ class _LoginState extends State<Login> {
                       children: <Widget>[
                         TextButton(
                           onPressed: (){
-                            signIn();
+                            context.read<SignInBloc>().add(SignInEvent.submitted(username, password));
                           },
                           child: Text(
                             'Log In',
@@ -154,5 +173,8 @@ class _LoginState extends State<Login> {
 
       ),
     );
+  }
+  ),
+  );
   }
 }
