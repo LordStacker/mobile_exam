@@ -8,7 +8,7 @@ class WebSocketService {
   final String url = 'ws://10.0.2.2:8181/';
   IOWebSocketChannel? _channel;
 
-  //This completer is used to complete the signIn() function when the server responds
+  //This completer is used to complete the signing functions when the server responds
   Completer<bool>? _signInCompleter;
 
   //This function connects to the WebSocket server and outputs messages to the handleEvent() function
@@ -33,6 +33,17 @@ class WebSocketService {
 
     _signInCompleter = Completer<bool>();
     _channel!.sink.add('{"eventType": "ClientWantsToSignIn", "Username": "$username", "Password": "$password"}');
+
+    return _signInCompleter!.future;
+  }
+
+  Future<bool> signUp(String username, String password, String email) async {
+    if (!isConnected()) {
+      await connect();
+    }
+
+    _signInCompleter = Completer<bool>();
+    _channel!.sink.add('{"eventType": "ClientWantsToRegister", "Username": "$username", "Password": "$password", "Email": "$email"}');
 
     return _signInCompleter!.future;
   }

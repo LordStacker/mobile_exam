@@ -19,19 +19,21 @@ mixin _$SignUpEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String username, String password) submitted,
+    required TResult Function(String username, String password, String email)
+        submitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String username, String password)? submitted,
+    TResult? Function(String username, String password, String email)?
+        submitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String username, String password)? submitted,
+    TResult Function(String username, String password, String email)? submitted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +115,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String username, String password) submitted,
+    required TResult Function(String username, String password, String email)
+        submitted,
   }) {
     return started();
   }
@@ -122,7 +125,8 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String username, String password)? submitted,
+    TResult? Function(String username, String password, String email)?
+        submitted,
   }) {
     return started?.call();
   }
@@ -131,7 +135,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String username, String password)? submitted,
+    TResult Function(String username, String password, String email)? submitted,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -182,7 +186,7 @@ abstract class _$$SubmittedImplCopyWith<$Res> {
           _$SubmittedImpl value, $Res Function(_$SubmittedImpl) then) =
       __$$SubmittedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String username, String password});
+  $Res call({String username, String password, String email});
 }
 
 /// @nodoc
@@ -198,6 +202,7 @@ class __$$SubmittedImplCopyWithImpl<$Res>
   $Res call({
     Object? username = null,
     Object? password = null,
+    Object? email = null,
   }) {
     return _then(_$SubmittedImpl(
       null == username
@@ -208,6 +213,10 @@ class __$$SubmittedImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -215,16 +224,18 @@ class __$$SubmittedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$SubmittedImpl implements _Submitted {
-  const _$SubmittedImpl(this.username, this.password);
+  const _$SubmittedImpl(this.username, this.password, this.email);
 
   @override
   final String username;
   @override
   final String password;
+  @override
+  final String email;
 
   @override
   String toString() {
-    return 'SignUpEvent.submitted(username: $username, password: $password)';
+    return 'SignUpEvent.submitted(username: $username, password: $password, email: $email)';
   }
 
   @override
@@ -235,11 +246,12 @@ class _$SubmittedImpl implements _Submitted {
             (identical(other.username, username) ||
                 other.username == username) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.email, email) || other.email == email));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, username, password);
+  int get hashCode => Object.hash(runtimeType, username, password, email);
 
   @JsonKey(ignore: true)
   @override
@@ -251,29 +263,31 @@ class _$SubmittedImpl implements _Submitted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String username, String password) submitted,
+    required TResult Function(String username, String password, String email)
+        submitted,
   }) {
-    return submitted(username, password);
+    return submitted(username, password, email);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String username, String password)? submitted,
+    TResult? Function(String username, String password, String email)?
+        submitted,
   }) {
-    return submitted?.call(username, password);
+    return submitted?.call(username, password, email);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String username, String password)? submitted,
+    TResult Function(String username, String password, String email)? submitted,
     required TResult orElse(),
   }) {
     if (submitted != null) {
-      return submitted(username, password);
+      return submitted(username, password, email);
     }
     return orElse();
   }
@@ -311,11 +325,13 @@ class _$SubmittedImpl implements _Submitted {
 }
 
 abstract class _Submitted implements SignUpEvent {
-  const factory _Submitted(final String username, final String password) =
+  const factory _Submitted(
+          final String username, final String password, final String email) =
       _$SubmittedImpl;
 
   String get username;
   String get password;
+  String get email;
   @JsonKey(ignore: true)
   _$$SubmittedImplCopyWith<_$SubmittedImpl> get copyWith =>
       throw _privateConstructorUsedError;
