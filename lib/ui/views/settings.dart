@@ -1,10 +1,16 @@
+import 'package:exam_project/services/GlobalSettingsService.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/BottomNavbar.dart';
 
-class Settings extends StatelessWidget {
+class Settings extends StatefulWidget {
   const Settings({super.key});
 
+  @override
+  State<Settings> createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,9 +45,11 @@ class Settings extends StatelessWidget {
                   Text('Use Celsius',
                       style: TextStyle(color: Color(0xffF0F3FF), fontSize: 20)),
                   Switch(
-                    value: true,
-                    onChanged: (value) {
-                      print(value);
+                    value: GlobalSettings().isCelsius,
+                    onChanged: (bool value) {
+                      setState(() {
+                        GlobalSettings().toggleCelsius();
+                      });
                     },
                     activeTrackColor: Color(0xff15F5BA),
                     activeColor: Color(0xffF0F3FF),
@@ -61,9 +69,11 @@ class Settings extends StatelessWidget {
                   Text('Use 24 Hour Time',
                       style: TextStyle(color: Color(0xffF0F3FF), fontSize: 20)),
                   Switch(
-                    value: true,
-                    onChanged: (value) {
-                      print(value);
+                    value: GlobalSettings().is24Hour,
+                    onChanged: (bool value) {
+                      setState(() {
+                        GlobalSettings().toggle24Hour();
+                      });
                     },
                     activeTrackColor: Color(0xff15F5BA),
                     activeColor: Color(0xffF0F3FF),
@@ -83,9 +93,11 @@ class Settings extends StatelessWidget {
                   Text('Enable Alerts',
                       style: TextStyle(color: Color(0xffF0F3FF), fontSize: 20)),
                   Switch(
-                    value: true,
-                    onChanged: (value) {
-                      print(value);
+                    value: GlobalSettings().enableNotifications,
+                    onChanged: (bool value) {
+                      setState(() {
+                        GlobalSettings().toggleNotifications();
+                      });
                     },
                     activeTrackColor: Color(0xff15F5BA),
                     activeColor: Color(0xffF0F3FF),

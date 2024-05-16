@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../bloc/signin/sign_in_bloc.dart';
-import '../../services/InputValidator.dart';
+import '../../services/InputValidatorService.dart';
 import 'newuser.dart';
 
 class Login extends StatefulWidget {
