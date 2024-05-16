@@ -1,6 +1,8 @@
-import 'package:web_socket_channel/io.dart';
-import 'dart:convert';
 import 'dart:async';
+import 'dart:convert';
+
+import 'package:web_socket_channel/io.dart';
+
 import 'JsonService.dart';
 
 //class that manages the WebSocket connection and sends messages to the server
@@ -50,7 +52,7 @@ class WebSocketService {
 
     _signInCompleter = Completer<bool>();
     _channel!.sink.add(JsonService().serialiseJson({
-      'eventType': 'ClientWantsToSignUp',
+      'eventType': 'ClientWantsToRegister',
       'Username': username,
       'Password': password,
       'Email': email,

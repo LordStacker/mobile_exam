@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../bloc/signin/sign_in_bloc.dart';
+import '../../services/InputValidator.dart';
 import 'newuser.dart';
 
 class Login extends StatefulWidget {
@@ -15,6 +16,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final usernameController = TextEditingController(text: "Test1");
   final passwordController = TextEditingController(text: "pass1234");
+  final _inputValidator = InputValidator();
 
   @override
   dispose() {
@@ -146,8 +148,21 @@ class _LoginState extends State<Login> {
                               onPressed: () {
                                 final username = usernameController.text;
                                 final password = passwordController.text;
-                                context.read<SignInBloc>().add(
-                                    SignInEvent.submitted(username, password));
+
+                                if (_inputValidator.isValidUsername(username) &&
+                                    _inputValidator.isValidPassword(password)) {
+                                  context.read<SignInBloc>().add(
+                                      SignInEvent.submitted(
+                                          username, password));
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content:
+                                          Text('Invalid username or password'),
+                                      backgroundColor: Colors.red,
+                                    ),
+                                  );
+                                }
                               },
                               child: Text(
                                 'Log In',

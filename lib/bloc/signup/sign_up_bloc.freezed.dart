@@ -21,6 +21,8 @@ mixin _$SignUpEvent {
     required TResult Function() started,
     required TResult Function(String username, String password, String email)
         submitted,
+    required TResult Function() confirmed,
+    required TResult Function() failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,31 +30,41 @@ mixin _$SignUpEvent {
     TResult? Function()? started,
     TResult? Function(String username, String password, String email)?
         submitted,
+    TResult? Function()? confirmed,
+    TResult? Function()? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String username, String password, String email)? submitted,
+    TResult Function()? confirmed,
+    TResult Function()? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Submitted value) submitted,
+    required TResult Function(Started value) started,
+    required TResult Function(Submitted value) submitted,
+    required TResult Function(Confirmed value) confirmed,
+    required TResult Function(Failure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(Started value)? started,
+    TResult? Function(Submitted value)? submitted,
+    TResult? Function(Confirmed value)? confirmed,
+    TResult? Function(Failure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Submitted value)? submitted,
+    TResult Function(Started value)? started,
+    TResult Function(Submitted value)? submitted,
+    TResult Function(Confirmed value)? confirmed,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -94,7 +106,7 @@ class __$$StartedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StartedImpl implements _Started {
+class _$StartedImpl implements Started {
   const _$StartedImpl();
 
   @override
@@ -117,6 +129,8 @@ class _$StartedImpl implements _Started {
     required TResult Function() started,
     required TResult Function(String username, String password, String email)
         submitted,
+    required TResult Function() confirmed,
+    required TResult Function() failure,
   }) {
     return started();
   }
@@ -127,6 +141,8 @@ class _$StartedImpl implements _Started {
     TResult? Function()? started,
     TResult? Function(String username, String password, String email)?
         submitted,
+    TResult? Function()? confirmed,
+    TResult? Function()? failure,
   }) {
     return started?.call();
   }
@@ -136,6 +152,8 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String username, String password, String email)? submitted,
+    TResult Function()? confirmed,
+    TResult Function()? failure,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -147,8 +165,10 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Submitted value) submitted,
+    required TResult Function(Started value) started,
+    required TResult Function(Submitted value) submitted,
+    required TResult Function(Confirmed value) confirmed,
+    required TResult Function(Failure value) failure,
   }) {
     return started(this);
   }
@@ -156,8 +176,10 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(Started value)? started,
+    TResult? Function(Submitted value)? submitted,
+    TResult? Function(Confirmed value)? confirmed,
+    TResult? Function(Failure value)? failure,
   }) {
     return started?.call(this);
   }
@@ -165,8 +187,10 @@ class _$StartedImpl implements _Started {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Submitted value)? submitted,
+    TResult Function(Started value)? started,
+    TResult Function(Submitted value)? submitted,
+    TResult Function(Confirmed value)? confirmed,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -176,8 +200,8 @@ class _$StartedImpl implements _Started {
   }
 }
 
-abstract class _Started implements SignUpEvent {
-  const factory _Started() = _$StartedImpl;
+abstract class Started implements SignUpEvent {
+  const factory Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -223,7 +247,7 @@ class __$$SubmittedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SubmittedImpl implements _Submitted {
+class _$SubmittedImpl implements Submitted {
   const _$SubmittedImpl(this.username, this.password, this.email);
 
   @override
@@ -265,6 +289,8 @@ class _$SubmittedImpl implements _Submitted {
     required TResult Function() started,
     required TResult Function(String username, String password, String email)
         submitted,
+    required TResult Function() confirmed,
+    required TResult Function() failure,
   }) {
     return submitted(username, password, email);
   }
@@ -275,6 +301,8 @@ class _$SubmittedImpl implements _Submitted {
     TResult? Function()? started,
     TResult? Function(String username, String password, String email)?
         submitted,
+    TResult? Function()? confirmed,
+    TResult? Function()? failure,
   }) {
     return submitted?.call(username, password, email);
   }
@@ -284,6 +312,8 @@ class _$SubmittedImpl implements _Submitted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String username, String password, String email)? submitted,
+    TResult Function()? confirmed,
+    TResult Function()? failure,
     required TResult orElse(),
   }) {
     if (submitted != null) {
@@ -295,8 +325,10 @@ class _$SubmittedImpl implements _Submitted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Submitted value) submitted,
+    required TResult Function(Started value) started,
+    required TResult Function(Submitted value) submitted,
+    required TResult Function(Confirmed value) confirmed,
+    required TResult Function(Failure value) failure,
   }) {
     return submitted(this);
   }
@@ -304,8 +336,10 @@ class _$SubmittedImpl implements _Submitted {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(Started value)? started,
+    TResult? Function(Submitted value)? submitted,
+    TResult? Function(Confirmed value)? confirmed,
+    TResult? Function(Failure value)? failure,
   }) {
     return submitted?.call(this);
   }
@@ -313,8 +347,10 @@ class _$SubmittedImpl implements _Submitted {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Submitted value)? submitted,
+    TResult Function(Started value)? started,
+    TResult Function(Submitted value)? submitted,
+    TResult Function(Confirmed value)? confirmed,
+    TResult Function(Failure value)? failure,
     required TResult orElse(),
   }) {
     if (submitted != null) {
@@ -324,8 +360,8 @@ class _$SubmittedImpl implements _Submitted {
   }
 }
 
-abstract class _Submitted implements SignUpEvent {
-  const factory _Submitted(
+abstract class Submitted implements SignUpEvent {
+  const factory Submitted(
           final String username, final String password, final String email) =
       _$SubmittedImpl;
 
@@ -338,13 +374,245 @@ abstract class _Submitted implements SignUpEvent {
 }
 
 /// @nodoc
+abstract class _$$ConfirmedImplCopyWith<$Res> {
+  factory _$$ConfirmedImplCopyWith(
+          _$ConfirmedImpl value, $Res Function(_$ConfirmedImpl) then) =
+      __$$ConfirmedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$ConfirmedImplCopyWithImpl<$Res>
+    extends _$SignUpEventCopyWithImpl<$Res, _$ConfirmedImpl>
+    implements _$$ConfirmedImplCopyWith<$Res> {
+  __$$ConfirmedImplCopyWithImpl(
+      _$ConfirmedImpl _value, $Res Function(_$ConfirmedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$ConfirmedImpl implements Confirmed {
+  const _$ConfirmedImpl();
+
+  @override
+  String toString() {
+    return 'SignUpEvent.confirmed()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$ConfirmedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String username, String password, String email)
+        submitted,
+    required TResult Function() confirmed,
+    required TResult Function() failure,
+  }) {
+    return confirmed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String username, String password, String email)?
+        submitted,
+    TResult? Function()? confirmed,
+    TResult? Function()? failure,
+  }) {
+    return confirmed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String username, String password, String email)? submitted,
+    TResult Function()? confirmed,
+    TResult Function()? failure,
+    required TResult orElse(),
+  }) {
+    if (confirmed != null) {
+      return confirmed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(Submitted value) submitted,
+    required TResult Function(Confirmed value) confirmed,
+    required TResult Function(Failure value) failure,
+  }) {
+    return confirmed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(Submitted value)? submitted,
+    TResult? Function(Confirmed value)? confirmed,
+    TResult? Function(Failure value)? failure,
+  }) {
+    return confirmed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(Submitted value)? submitted,
+    TResult Function(Confirmed value)? confirmed,
+    TResult Function(Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (confirmed != null) {
+      return confirmed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Confirmed implements SignUpEvent {
+  const factory Confirmed() = _$ConfirmedImpl;
+}
+
+/// @nodoc
+abstract class _$$FailureImplCopyWith<$Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$SignUpEventCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$FailureImpl implements Failure {
+  const _$FailureImpl();
+
+  @override
+  String toString() {
+    return 'SignUpEvent.failure()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$FailureImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String username, String password, String email)
+        submitted,
+    required TResult Function() confirmed,
+    required TResult Function() failure,
+  }) {
+    return failure();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String username, String password, String email)?
+        submitted,
+    TResult? Function()? confirmed,
+    TResult? Function()? failure,
+  }) {
+    return failure?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String username, String password, String email)? submitted,
+    TResult Function()? confirmed,
+    TResult Function()? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Started value) started,
+    required TResult Function(Submitted value) submitted,
+    required TResult Function(Confirmed value) confirmed,
+    required TResult Function(Failure value) failure,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Started value)? started,
+    TResult? Function(Submitted value)? submitted,
+    TResult? Function(Confirmed value)? confirmed,
+    TResult? Function(Failure value)? failure,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Started value)? started,
+    TResult Function(Submitted value)? submitted,
+    TResult Function(Confirmed value)? confirmed,
+    TResult Function(Failure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Failure implements SignUpEvent {
+  const factory Failure() = _$FailureImpl;
+}
+
+/// @nodoc
 mixin _$SignUpState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function() failure,
+    required TResult Function() error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -352,7 +620,7 @@ mixin _$SignUpState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function()? failure,
+    TResult? Function()? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -360,32 +628,32 @@ mixin _$SignUpState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function()? failure,
+    TResult Function()? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -427,7 +695,7 @@ class __$$InitialImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
+class _$InitialImpl implements Initial {
   const _$InitialImpl();
 
   @override
@@ -450,7 +718,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function() failure,
+    required TResult Function() error,
   }) {
     return initial();
   }
@@ -461,7 +729,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function()? failure,
+    TResult? Function()? error,
   }) {
     return initial?.call();
   }
@@ -472,7 +740,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function()? failure,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -484,10 +752,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
   }) {
     return initial(this);
   }
@@ -495,10 +763,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
   }) {
     return initial?.call(this);
   }
@@ -506,10 +774,10 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -519,8 +787,8 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements SignUpState {
-  const factory _Initial() = _$InitialImpl;
+abstract class Initial implements SignUpState {
+  const factory Initial() = _$InitialImpl;
 }
 
 /// @nodoc
@@ -541,7 +809,7 @@ class __$$LoadingImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadingImpl implements _Loading {
+class _$LoadingImpl implements Loading {
   const _$LoadingImpl();
 
   @override
@@ -564,7 +832,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function() failure,
+    required TResult Function() error,
   }) {
     return loading();
   }
@@ -575,7 +843,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function()? failure,
+    TResult? Function()? error,
   }) {
     return loading?.call();
   }
@@ -586,7 +854,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function()? failure,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -598,10 +866,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
   }) {
     return loading(this);
   }
@@ -609,10 +877,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
   }) {
     return loading?.call(this);
   }
@@ -620,10 +888,10 @@ class _$LoadingImpl implements _Loading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -633,8 +901,8 @@ class _$LoadingImpl implements _Loading {
   }
 }
 
-abstract class _Loading implements SignUpState {
-  const factory _Loading() = _$LoadingImpl;
+abstract class Loading implements SignUpState {
+  const factory Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -655,7 +923,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$SuccessImpl implements _Success {
+class _$SuccessImpl implements Success {
   const _$SuccessImpl();
 
   @override
@@ -678,7 +946,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function() failure,
+    required TResult Function() error,
   }) {
     return success();
   }
@@ -689,7 +957,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function()? failure,
+    TResult? Function()? error,
   }) {
     return success?.call();
   }
@@ -700,7 +968,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function()? failure,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -712,10 +980,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
   }) {
     return success(this);
   }
@@ -723,10 +991,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
   }) {
     return success?.call(this);
   }
@@ -734,10 +1002,10 @@ class _$SuccessImpl implements _Success {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -747,40 +1015,40 @@ class _$SuccessImpl implements _Success {
   }
 }
 
-abstract class _Success implements SignUpState {
-  const factory _Success() = _$SuccessImpl;
+abstract class Success implements SignUpState {
+  const factory Success() = _$SuccessImpl;
 }
 
 /// @nodoc
-abstract class _$$FailureImplCopyWith<$Res> {
-  factory _$$FailureImplCopyWith(
-          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
-      __$$FailureImplCopyWithImpl<$Res>;
+abstract class _$$ErrorImplCopyWith<$Res> {
+  factory _$$ErrorImplCopyWith(
+          _$ErrorImpl value, $Res Function(_$ErrorImpl) then) =
+      __$$ErrorImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FailureImplCopyWithImpl<$Res>
-    extends _$SignUpStateCopyWithImpl<$Res, _$FailureImpl>
-    implements _$$FailureImplCopyWith<$Res> {
-  __$$FailureImplCopyWithImpl(
-      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+class __$$ErrorImplCopyWithImpl<$Res>
+    extends _$SignUpStateCopyWithImpl<$Res, _$ErrorImpl>
+    implements _$$ErrorImplCopyWith<$Res> {
+  __$$ErrorImplCopyWithImpl(
+      _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$FailureImpl implements _Failure {
-  const _$FailureImpl();
+class _$ErrorImpl implements Error {
+  const _$ErrorImpl();
 
   @override
   String toString() {
-    return 'SignUpState.failure()';
+    return 'SignUpState.error()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$FailureImpl);
+        (other.runtimeType == runtimeType && other is _$ErrorImpl);
   }
 
   @override
@@ -792,9 +1060,9 @@ class _$FailureImpl implements _Failure {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() success,
-    required TResult Function() failure,
+    required TResult Function() error,
   }) {
-    return failure();
+    return error();
   }
 
   @override
@@ -803,9 +1071,9 @@ class _$FailureImpl implements _Failure {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? success,
-    TResult? Function()? failure,
+    TResult? Function()? error,
   }) {
-    return failure?.call();
+    return error?.call();
   }
 
   @override
@@ -814,11 +1082,11 @@ class _$FailureImpl implements _Failure {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? success,
-    TResult Function()? failure,
+    TResult Function()? error,
     required TResult orElse(),
   }) {
-    if (failure != null) {
-      return failure();
+    if (error != null) {
+      return error();
     }
     return orElse();
   }
@@ -826,41 +1094,41 @@ class _$FailureImpl implements _Failure {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Success value) success,
-    required TResult Function(_Failure value) failure,
+    required TResult Function(Initial value) initial,
+    required TResult Function(Loading value) loading,
+    required TResult Function(Success value) success,
+    required TResult Function(Error value) error,
   }) {
-    return failure(this);
+    return error(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loading value)? loading,
-    TResult? Function(_Success value)? success,
-    TResult? Function(_Failure value)? failure,
+    TResult? Function(Initial value)? initial,
+    TResult? Function(Loading value)? loading,
+    TResult? Function(Success value)? success,
+    TResult? Function(Error value)? error,
   }) {
-    return failure?.call(this);
+    return error?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Success value)? success,
-    TResult Function(_Failure value)? failure,
+    TResult Function(Initial value)? initial,
+    TResult Function(Loading value)? loading,
+    TResult Function(Success value)? success,
+    TResult Function(Error value)? error,
     required TResult orElse(),
   }) {
-    if (failure != null) {
-      return failure(this);
+    if (error != null) {
+      return error(this);
     }
     return orElse();
   }
 }
 
-abstract class _Failure implements SignUpState {
-  const factory _Failure() = _$FailureImpl;
+abstract class Error implements SignUpState {
+  const factory Error() = _$ErrorImpl;
 }
