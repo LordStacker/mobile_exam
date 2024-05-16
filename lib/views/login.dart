@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'newuser.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class Login extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
                         SvgPicture.asset(
-                          'assets/user.svg',
+                          'assets/svgs/user.svg',
                           width: 50,
                           height: 50,
                         ),
@@ -59,7 +60,11 @@ class Login extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: <Widget>[
-                        Icon(Icons.lock),
+                    SvgPicture.asset(
+                    'assets/svgs/Pacifier.svg',
+                      width: 50,
+                      height: 50,
+                    ),
                         Container(
                           width: 150,
                           height: 50,
@@ -98,7 +103,12 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         TextButton(
-                          onPressed: (){print('test');},
+                          onPressed: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => NewUser()),
+                            );
+                          },
                           child: Text(
                             'New User?',
                             style: TextStyle(
