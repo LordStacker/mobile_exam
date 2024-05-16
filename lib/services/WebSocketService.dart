@@ -51,8 +51,6 @@ class WebSocketService {
   }
 
   Map getMeasurements() {
-    //before this aswell :,(
-    print("hey man this sucks!");
     return JsonService().serialiseJson(JsonService().testJsonMeasurements);
   }
 

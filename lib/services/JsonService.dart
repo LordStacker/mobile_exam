@@ -13,7 +13,6 @@ class JsonService {
 ''';
 
   Map serialiseJson(String json) {
-    //not even being printed, the issue is ocurring before this
     return jsonDecode(json);
   }
 }

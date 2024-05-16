@@ -14,15 +14,10 @@ class MeasurementsBloc extends Bloc<MeasurementsEvent, MeasurementsState> {
       event.map(
 
         started: (e) async {
-          print("maybe its occurring here?");
-
-          //emit(MeasurementsState.initial());
-          emit(MeasurementsState.loading());
+          emit(MeasurementsState.initial());
         },
 
         loadMeasurements: (e) async {
-          // not here either :(
-          print("maybe its occurring here in the loadm?");
           emit(const MeasurementsState.loading());
           var measurements = _webSocketService.getMeasurements();
 

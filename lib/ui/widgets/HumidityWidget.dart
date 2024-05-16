@@ -5,9 +5,9 @@ import 'package:http/http.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HumitdityWidget extends StatefulWidget {
-  final String humidity = 'Normal';
+  final String humidity;
 
-  const HumitdityWidget({super.key , required humidity});
+  const HumitdityWidget({super.key , required this.humidity});
 
   @override
   State<HumitdityWidget> createState() => _HumitdityWidgetState();

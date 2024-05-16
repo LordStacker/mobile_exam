@@ -5,9 +5,9 @@ import 'package:http/http.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TemperatureWidget extends StatefulWidget {
-  final String temperature = '';
+  final int temperature;
 
-  const TemperatureWidget({super.key, required temperature});
+  const TemperatureWidget({super.key, required this.temperature});
 
   @override
   State<TemperatureWidget> createState() => _TemperatureWidgetState();
