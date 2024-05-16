@@ -14,6 +14,10 @@ class GlobalSettings {
 
   bool enableNotifications = true;
 
+  Map currentUser = {
+    'username': '',
+  };
+
   void toggleCelsius() {
     isCelsius = !isCelsius;
   }

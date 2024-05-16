@@ -1,11 +1,18 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/BottomNavbar.dart';
-import '../widgets/NotificationWidget.dart';
 
-class Alerts extends StatelessWidget {
-  const Alerts({super.key});
+class Alerts extends StatefulWidget {
+  final RemoteMessage? message;
 
+  const Alerts({super.key, this.message});
+
+  @override
+  State<Alerts> createState() => _AlertsState();
+}
+
+class _AlertsState extends State<Alerts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,57 +34,15 @@ class Alerts extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
+            Text(
+              'You have a new notification:',
             ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
+            Text(
+              '${widget.message?.notification?.title ?? 'No title'}',
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10, bottom: 10),
-              child: NotificationWidget(),
+            Text(
+              '${widget.message?.notification?.body ?? 'No body'}',
             ),
           ],
         ),
