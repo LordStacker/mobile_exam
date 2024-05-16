@@ -12,7 +12,11 @@ class JsonService {
 }
 ''';
 
-  Map serialiseJson(String json) {
+  Map deserialiseJson(String json) {
     return jsonDecode(json);
+  }
+
+  String serialiseJson(Map json) {
+    return jsonEncode(json);
   }
 }

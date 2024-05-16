@@ -33,7 +33,11 @@ class WebSocketService {
     }
 
     _signInCompleter = Completer<bool>();
-    _channel!.sink.add('{"eventType": "ClientWantsToSignIn", "Username": "$username", "Password": "$password"}');
+    _channel!.sink.add(JsonService().serialiseJson({
+      'eventType': 'ClientWantsToSignIn',
+      'Username': username,
+      'Password': password,
+    }));
 
     return _signInCompleter!.future;
   }
@@ -45,13 +49,18 @@ class WebSocketService {
     }
 
     _signInCompleter = Completer<bool>();
-    _channel!.sink.add('{"eventType": "ClientWantsToRegister", "Username": "$username", "Password": "$password", "Email": "$email"}');
+    _channel!.sink.add(JsonService().serialiseJson({
+      'eventType': 'ClientWantsToSignUp',
+      'Username': username,
+      'Password': password,
+      'Email': email,
+    }));
 
     return _signInCompleter!.future;
   }
 
   Map getMeasurements() {
-    return JsonService().serialiseJson(JsonService().testJsonMeasurements);
+    return JsonService().deserialiseJson(JsonService().testJsonMeasurements);
   }
 
   //This function handles the events recieved from the WebSocket server and returns the response
