@@ -12,15 +12,23 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  String username = '';
-  String password = '';
+
+  final usernameController = TextEditingController(text: "Test1");
+  final passwordController = TextEditingController(text: "pass1234");
+
+  @override
+  dispose() {
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     // Bloc provider to provide the SignInBloc to the widget tree and listen for state changes
     return BlocProvider(
       create: (context) => SignInBloc(),
-        child: BlocConsumer<SignInBloc, SignInState>(
+      child: BlocConsumer<SignInBloc, SignInState>(
         listener: (context, state) { // This listener listens for state changes and acts accordingly
       state.map(
         initial: (_) {},
@@ -86,9 +94,7 @@ class _LoginState extends State<Login> {
                           width: 150,
                           height: 50,
                           child: TextField(
-                            onChanged: (String value) {
-                              username = value;
-                            },
+                            controller: usernameController,
                             decoration: InputDecoration(
                               fillColor: Color(0xff211951),
                               filled: true,
@@ -119,9 +125,8 @@ class _LoginState extends State<Login> {
                           width: 150,
                           height: 50,
                           child: TextField(
-                            onChanged: (String value) {
-                              password = value;
-                            },
+                            controller: passwordController,
+
                             obscureText: true,
                             decoration: InputDecoration(
                               fillColor: Color(0xff211951),
@@ -145,6 +150,8 @@ class _LoginState extends State<Login> {
                       children: <Widget>[
                         TextButton(
                           onPressed: (){
+                            final username = usernameController.text;
+                            final password = passwordController.text;
                             context.read<SignInBloc>().add(SignInEvent.submitted(username, password));
                           },
                           child: Text(

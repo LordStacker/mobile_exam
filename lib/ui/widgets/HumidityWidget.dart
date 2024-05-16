@@ -5,36 +5,16 @@ import 'package:http/http.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HumitdityWidget extends StatefulWidget {
-  const HumitdityWidget({super.key});
+  final String humidity = 'Normal';
+
+  const HumitdityWidget({super.key , required humidity});
 
   @override
   State<HumitdityWidget> createState() => _HumitdityWidgetState();
 }
 
 class _HumitdityWidgetState extends State<HumitdityWidget> {
-  String retrievedHumidityLevel = 'Normal'; // This will be updated with the actual humidity level
-  //late Timer _timer;//Timer to get the humidity level every n amounts of time
 
-  //@override
- // void initState() {
- //   super.initState();
- //   _timer = Timer.periodic(Duration(seconds: 1), (timer) => getHumidityLevel());
- // } // This will get the Humidity level every second
-
-  //@override
-  //void dispose() {
- //   _timer.cancel();
-//    super.dispose();
- // } // This will cancel the timer when the widget is disposed
-
-  //Commented out the timer because there is no good API to use as a placholder for this, will remove comments when the actual API is available
-
-  void getHumidityLevel() async {
-    Response response = await get(Uri.parse('http://www.randomnumberapi.com/api/v1.0/random?min=0&max=99&count=1'));
-    List data = jsonDecode(response.body);
-    retrievedHumidityLevel = data[0];
-    setState(() {});
-  } // This will get the temperature level from the API
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +65,7 @@ class _HumitdityWidgetState extends State<HumitdityWidget> {
                               ),
                               child: Center(
                                 child: Text(
-                                  '$retrievedHumidityLevel',
+                                  '${widget.humidity}',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,

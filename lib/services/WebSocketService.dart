@@ -1,6 +1,7 @@
 import 'package:web_socket_channel/io.dart';
 import 'dart:convert';
 import 'dart:async';
+import 'JsonService.dart';
 
 //class that manages the WebSocket connection and sends messages to the server
 class WebSocketService {
@@ -37,6 +38,7 @@ class WebSocketService {
     return _signInCompleter!.future;
   }
 
+  //This function sends a message to the WebSocket server to register a new user
   Future<bool> signUp(String username, String password, String email) async {
     if (!isConnected()) {
       await connect();
@@ -46,6 +48,12 @@ class WebSocketService {
     _channel!.sink.add('{"eventType": "ClientWantsToRegister", "Username": "$username", "Password": "$password", "Email": "$email"}');
 
     return _signInCompleter!.future;
+  }
+
+  Map getMeasurements() {
+    //before this aswell :,(
+    print("hey man this sucks!");
+    return JsonService().serialiseJson(JsonService().testJsonMeasurements);
   }
 
   //This function handles the events recieved from the WebSocket server and returns the response

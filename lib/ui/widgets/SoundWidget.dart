@@ -5,38 +5,16 @@ import 'package:http/http.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SoundWidget extends StatefulWidget {
-  const SoundWidget({super.key});
+  final int sound;
+
+  const SoundWidget({super.key, required this.sound});
+
 
   @override
   State<SoundWidget> createState() => _SoundWidgetState();
 }
 
 class _SoundWidgetState extends State<SoundWidget> {
-
-  int retrievedSoundLevel = 0; // This will be updated with the actual sound level
-  late Timer _timer;//Timer to get the sound level every n amounts of time
-
-  @override
-  void initState() {
-    super.initState();
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) => getSoundLevel());
-  } // This will get the sound level every second
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  } // This will cancel the timer when the widget is disposed
-
-
-  void getSoundLevel() async {
-    Response response = await get(Uri.parse('http://www.randomnumberapi.com/api/v1.0/random?min=0&max=99&count=1'));
-    List data = jsonDecode(response.body);
-    retrievedSoundLevel = data[0];
-    if(mounted){
-      setState(() {});
-    }
-  } // This will get the sound level from the API
 
 
 
@@ -89,7 +67,7 @@ class _SoundWidgetState extends State<SoundWidget> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    '$retrievedSoundLevel dB', // This will display the sound level
+                                    '${widget.sound} dB', // This will display the sound level
                                     style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
