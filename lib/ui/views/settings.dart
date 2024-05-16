@@ -9,6 +9,10 @@ class Settings extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xffF0F3FF),
       appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Color(0xffF0F3FF)),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
           backgroundColor: Color(0xff211951),
           title: Text('Settings'),
           titleTextStyle: TextStyle(
