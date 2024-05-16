@@ -1,8 +1,9 @@
 part of 'measurements_bloc.dart';
 
 @freezed
-class MeasurementsEvent with _$MeasurementsEvent {
-  const factory MeasurementsEvent.started() = _Started;
-  const factory MeasurementsEvent.loadMeasurements() = _LoadMeasurements;
-  const factory MeasurementsEvent.loadMeasurementsSuccess(Map measurements) = _LoadMeasurementsSuccess;
+sealed class MeasurementsEvent with _$MeasurementsEvent {
+  const factory MeasurementsEvent.started() = Started;
+  const factory MeasurementsEvent.loadMeasurements() = LoadMeasurements;
+  const factory MeasurementsEvent.loadMeasurementsSuccess(Map measurements) =
+      LoadMeasurementsSuccess;
 }
