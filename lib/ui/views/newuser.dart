@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../bloc/signup/sign_up_bloc.dart';
-import '../../services/InputValidator.dart';
+import '../../services/InputValidatorService.dart';
 
 class NewUser extends StatefulWidget {
   const NewUser({super.key});

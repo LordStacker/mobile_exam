@@ -1,7 +1,5 @@
-import 'dart:async';
-import 'dart:convert';
+import 'package:exam_project/services/GlobalSettingsService.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TemperatureWidget extends StatefulWidget {
@@ -14,7 +12,12 @@ class TemperatureWidget extends StatefulWidget {
 }
 
 class _TemperatureWidgetState extends State<TemperatureWidget> {
-
+  // This function is used to get the temperature symbol based on the global settings
+  String processTemperature() {
+    return GlobalSettings().isCelsius
+        ? ('${widget.temperature} °C')
+        : ('${(widget.temperature * 1.8) + 32} °F');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,15 +29,14 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
         child: Scaffold(
             backgroundColor: Color(0xff211951),
             body: Center(
-              child:  Container(
+              child: Container(
                 height: 120,
                 width: 300,
                 decoration: BoxDecoration(
                   color: Color(0xff211951),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child:
-                Column(
+                child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Text(
@@ -45,7 +47,6 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
                           color: Color(0xffF0F3FF),
                         ),
                       ),
-
                       Container(
                         width: 250,
                         child: Row(
@@ -57,7 +58,7 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
                               height: 50,
                             ),
                             Container(
-                              width: 70,
+                              width: 100,
                               padding: EdgeInsets.all(7),
                               decoration: BoxDecoration(
                                 color: Color(0xff615B85),
@@ -65,7 +66,7 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
                               ),
                               child: Center(
                                 child: Text(
-                                  '${widget.temperature} °C',
+                                  '${processTemperature()}',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
@@ -77,11 +78,9 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
                           ],
                         ),
                       )
-                    ]
-                ),
+                    ]),
               ),
-            )
-        ),
+            )),
       ),
     );
   }
