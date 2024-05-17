@@ -84,7 +84,6 @@ class WebSocketService {
       case 'ServerConfirmsSignIn':
         GlobalSettings().currentUser['username'] = event['Username'];
         GlobalSettings().currentUser['id'] = event['user_id'];
-
         _completer?.complete(true);
         break;
       case 'WrongCredentialsEvent':
@@ -97,7 +96,7 @@ class WebSocketService {
         _completer?.complete(false);
         break;
       case 'SensorReadRetrieved':
-        _measurementsCompleter?.complete(event);
+        _measurementsCompleter?.complete(event['Sensor']);
         break;
       case 'SensorReadFailed':
         _measurementsCompleter?.complete({});
