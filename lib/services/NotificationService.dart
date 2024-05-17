@@ -1,6 +1,30 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-import 'NotificationController.dart';
+import '../main.dart';
+
+Future<void> handleBackgroundMessage(RemoteMessage message) async {
+  print('Title: ${message.notification?.title}');
+  print('Body: ${message.notification?.body}');
+  print('Payload: ${message.data}');
+}
+
+void handleMessage(RemoteMessage? message) {
+  if (message == null) return;
+
+  navigatorKey.currentState?.pushNamed('/alerts', arguments: message);
+}
+
+Future initPushNotifications() async {
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true,
+    badge: true,
+    sound: true,
+  );
+
+  FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
+  FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
+  FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
+}
 
 class NotificationService {
   NotificationService._privateConstructor();
@@ -12,49 +36,12 @@ class NotificationService {
     return _instance;
   }
 
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  final _firebaseMessaging = FirebaseMessaging.instance;
 
-  Future<bool> requestPermission() async {
-    NotificationSettings settings = await messaging.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
-
-    return settings.authorizationStatus == AuthorizationStatus.authorized;
-  }
-
-  void setupCallBacks() async {
-    // Handle notifications when the app is in the foreground.
-    FirebaseMessaging.onMessage.listen(NotificationController.onMessage);
-
-    // Allow you to do something when a notification have been received while
-    // the app is in the background.
-    FirebaseMessaging.onBackgroundMessage(
-        NotificationController.onBackgroundMessage);
-
-    // Get any messages which caused the application to open from
-    // a terminated state.
-    RemoteMessage? initialMessage =
-        await FirebaseMessaging.instance.getInitialMessage();
-
-    // Handle message if we got one.
-    if (initialMessage != null) {
-      NotificationController.onMessage(initialMessage);
-    }
-
-    // Also handle any interaction when the app is in the background via a
-    // Stream listener
-    FirebaseMessaging.onMessageOpenedApp
-        .listen(NotificationController.onMessage);
-  }
-
-  Stream<String?> get tokenStream async* {
-    yield await messaging.getToken();
-    yield* messaging.onTokenRefresh;
+  Future<void> initNotifications() async {
+    await _firebaseMessaging.requestPermission();
+    final token = await _firebaseMessaging.getToken();
+    print('Token: $token');
+    initPushNotifications();
   }
 }

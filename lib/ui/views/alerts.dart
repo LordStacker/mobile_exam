@@ -55,19 +55,11 @@ class _AlertsState extends State<Alerts> {
           builder: (context, state) {
             return switch (state) {
               Initial() || Loading() => Container(),
-              Display(:final messages) => Center(
+              Display() => Center(
                     child: SingleChildScrollView(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      for (var message in messages)
-                        Card(
-                          child: ListTile(
-                            title: Text(message['title']),
-                            subtitle: Text(message['body']),
-                          ),
-                        ),
-                    ],
+                    children: <Widget>[],
                   ),
                 )),
               AlertsState() =>

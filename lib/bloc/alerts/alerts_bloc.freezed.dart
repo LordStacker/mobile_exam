@@ -19,19 +19,19 @@ mixin _$AlertsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(List<dynamic> messages) recieved,
+    required TResult Function() recieved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(List<dynamic> messages)? recieved,
+    TResult? Function()? recieved,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(List<dynamic> messages)? recieved,
+    TResult Function()? recieved,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(List<dynamic> messages) recieved,
+    required TResult Function() recieved,
   }) {
     return started();
   }
@@ -122,7 +122,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(List<dynamic> messages)? recieved,
+    TResult? Function()? recieved,
   }) {
     return started?.call();
   }
@@ -131,7 +131,7 @@ class _$StartedImpl implements Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(List<dynamic> messages)? recieved,
+    TResult Function()? recieved,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -181,8 +181,6 @@ abstract class _$$RecievedImplCopyWith<$Res> {
   factory _$$RecievedImplCopyWith(
           _$RecievedImpl value, $Res Function(_$RecievedImpl) then) =
       __$$RecievedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<dynamic> messages});
 }
 
 /// @nodoc
@@ -192,84 +190,54 @@ class __$$RecievedImplCopyWithImpl<$Res>
   __$$RecievedImplCopyWithImpl(
       _$RecievedImpl _value, $Res Function(_$RecievedImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? messages = null,
-  }) {
-    return _then(_$RecievedImpl(
-      null == messages
-          ? _value._messages
-          : messages // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$RecievedImpl implements Recieved {
-  const _$RecievedImpl(final List<dynamic> messages) : _messages = messages;
-
-  final List<dynamic> _messages;
-  @override
-  List<dynamic> get messages {
-    if (_messages is EqualUnmodifiableListView) return _messages;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_messages);
-  }
+  const _$RecievedImpl();
 
   @override
   String toString() {
-    return 'AlertsEvent.recieved(messages: $messages)';
+    return 'AlertsEvent.recieved()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RecievedImpl &&
-            const DeepCollectionEquality().equals(other._messages, _messages));
+        (other.runtimeType == runtimeType && other is _$RecievedImpl);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$RecievedImplCopyWith<_$RecievedImpl> get copyWith =>
-      __$$RecievedImplCopyWithImpl<_$RecievedImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(List<dynamic> messages) recieved,
+    required TResult Function() recieved,
   }) {
-    return recieved(messages);
+    return recieved();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(List<dynamic> messages)? recieved,
+    TResult? Function()? recieved,
   }) {
-    return recieved?.call(messages);
+    return recieved?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(List<dynamic> messages)? recieved,
+    TResult Function()? recieved,
     required TResult orElse(),
   }) {
     if (recieved != null) {
-      return recieved(messages);
+      return recieved();
     }
     return orElse();
   }
@@ -307,12 +275,7 @@ class _$RecievedImpl implements Recieved {
 }
 
 abstract class Recieved implements AlertsEvent {
-  const factory Recieved(final List<dynamic> messages) = _$RecievedImpl;
-
-  List<dynamic> get messages;
-  @JsonKey(ignore: true)
-  _$$RecievedImplCopyWith<_$RecievedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory Recieved() = _$RecievedImpl;
 }
 
 /// @nodoc
@@ -321,21 +284,21 @@ mixin _$AlertsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> messages) display,
+    required TResult Function() display,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> messages)? display,
+    TResult? Function()? display,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> messages)? display,
+    TResult Function()? display,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -421,7 +384,7 @@ class _$InitialImpl implements Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> messages) display,
+    required TResult Function() display,
   }) {
     return initial();
   }
@@ -431,7 +394,7 @@ class _$InitialImpl implements Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> messages)? display,
+    TResult? Function()? display,
   }) {
     return initial?.call();
   }
@@ -441,7 +404,7 @@ class _$InitialImpl implements Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> messages)? display,
+    TResult Function()? display,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -529,7 +492,7 @@ class _$LoadingImpl implements Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> messages) display,
+    required TResult Function() display,
   }) {
     return loading();
   }
@@ -539,7 +502,7 @@ class _$LoadingImpl implements Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> messages)? display,
+    TResult? Function()? display,
   }) {
     return loading?.call();
   }
@@ -549,7 +512,7 @@ class _$LoadingImpl implements Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> messages)? display,
+    TResult Function()? display,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -602,8 +565,6 @@ abstract class _$$DisplayImplCopyWith<$Res> {
   factory _$$DisplayImplCopyWith(
           _$DisplayImpl value, $Res Function(_$DisplayImpl) then) =
       __$$DisplayImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({List<dynamic> messages});
 }
 
 /// @nodoc
@@ -613,65 +574,35 @@ class __$$DisplayImplCopyWithImpl<$Res>
   __$$DisplayImplCopyWithImpl(
       _$DisplayImpl _value, $Res Function(_$DisplayImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? messages = null,
-  }) {
-    return _then(_$DisplayImpl(
-      null == messages
-          ? _value._messages
-          : messages // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$DisplayImpl implements Display {
-  const _$DisplayImpl(final List<dynamic> messages) : _messages = messages;
-
-  final List<dynamic> _messages;
-  @override
-  List<dynamic> get messages {
-    if (_messages is EqualUnmodifiableListView) return _messages;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_messages);
-  }
+  const _$DisplayImpl();
 
   @override
   String toString() {
-    return 'AlertsState.display(messages: $messages)';
+    return 'AlertsState.display()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DisplayImpl &&
-            const DeepCollectionEquality().equals(other._messages, _messages));
+        (other.runtimeType == runtimeType && other is _$DisplayImpl);
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_messages));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DisplayImplCopyWith<_$DisplayImpl> get copyWith =>
-      __$$DisplayImplCopyWithImpl<_$DisplayImpl>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<dynamic> messages) display,
+    required TResult Function() display,
   }) {
-    return display(messages);
+    return display();
   }
 
   @override
@@ -679,9 +610,9 @@ class _$DisplayImpl implements Display {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(List<dynamic> messages)? display,
+    TResult? Function()? display,
   }) {
-    return display?.call(messages);
+    return display?.call();
   }
 
   @override
@@ -689,11 +620,11 @@ class _$DisplayImpl implements Display {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<dynamic> messages)? display,
+    TResult Function()? display,
     required TResult orElse(),
   }) {
     if (display != null) {
-      return display(messages);
+      return display();
     }
     return orElse();
   }
@@ -734,10 +665,5 @@ class _$DisplayImpl implements Display {
 }
 
 abstract class Display implements AlertsState {
-  const factory Display(final List<dynamic> messages) = _$DisplayImpl;
-
-  List<dynamic> get messages;
-  @JsonKey(ignore: true)
-  _$$DisplayImplCopyWith<_$DisplayImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory Display() = _$DisplayImpl;
 }
