@@ -2,12 +2,23 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 class NotificationController {
+  NotificationController._privateConstructor();
+
+  static final NotificationController _instance =
+      NotificationController._privateConstructor();
+
+  factory NotificationController() {
+    return _instance;
+  }
+
+  static List notificationList = [];
+
   static onMessage(RemoteMessage message) {
     print('Got a message whilst in the foreground!');
     print('Message data: ${message.data}');
 
     if (message.notification != null) {
-      print('Message also contained a notification: ${message.notification}');
+      notificationList.add(ConvertMessageToMap(message));
     }
   }
 
@@ -17,5 +28,18 @@ class NotificationController {
     await Firebase.initializeApp();
 
     print("Handling a background message: ${message.messageId}");
+  }
+
+  static ConvertMessageToMap(RemoteMessage message) {
+    Map<String, dynamic> messageMap = {
+      'title': message.notification?.title,
+      'body': message.notification?.body,
+      'data': message.data,
+    };
+    return messageMap;
+  }
+
+  static List getNotifications() {
+    return notificationList;
   }
 }

@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:exam_project/services/GlobalSettingsService.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../services/WebSocketService.dart';
@@ -23,7 +22,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           await _webSocketService.signIn(event.username, event.password);
 
       if (success) {
-        GlobalSettings().currentUser['username'] = event.username;
         emit(const SignInState.success());
       } else {
         emit(const SignInState.error());

@@ -3,6 +3,15 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'NotificationController.dart';
 
 class NotificationService {
+  NotificationService._privateConstructor();
+
+  static final NotificationService _instance =
+      NotificationService._privateConstructor();
+
+  factory NotificationService() {
+    return _instance;
+  }
+
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   Future<bool> requestPermission() async {

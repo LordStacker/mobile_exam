@@ -1,21 +1,16 @@
-import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HumitdityWidget extends StatefulWidget {
-  final String humidity;
+  final int humidity;
 
-  const HumitdityWidget({super.key , required this.humidity});
+  const HumitdityWidget({super.key, required this.humidity});
 
   @override
   State<HumitdityWidget> createState() => _HumitdityWidgetState();
 }
 
 class _HumitdityWidgetState extends State<HumitdityWidget> {
-
-
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -26,15 +21,14 @@ class _HumitdityWidgetState extends State<HumitdityWidget> {
         child: Scaffold(
             backgroundColor: Color(0xff211951),
             body: Center(
-              child:  Container(
+              child: Container(
                 height: 120,
                 width: 300,
                 decoration: BoxDecoration(
                   color: Color(0xff211951),
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child:
-                Column(
+                child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Text(
@@ -45,7 +39,6 @@ class _HumitdityWidgetState extends State<HumitdityWidget> {
                           color: Color(0xffF0F3FF),
                         ),
                       ),
-
                       Container(
                         width: 250,
                         child: Row(
@@ -77,11 +70,9 @@ class _HumitdityWidgetState extends State<HumitdityWidget> {
                           ],
                         ),
                       )
-                    ]
-                ),
+                    ]),
               ),
-            )
-        ),
+            )),
       ),
     );
   }

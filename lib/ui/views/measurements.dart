@@ -76,11 +76,11 @@ class _MeasurementsState extends State<Measurements> {
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              SoundWidget(sound: measurements['sound_level']),
+                              SoundWidget(sound: measurements['SoundLevel']),
                               TemperatureWidget(
-                                  temperature: measurements['temperature']),
+                                  temperature: measurements['Temperature']),
                               HumitdityWidget(
-                                  humidity: measurements['humidity']),
+                                  humidity: measurements['Humidity']),
                             ]),
                       ),
                     ],

@@ -18,8 +18,14 @@ class MeasurementsBloc extends Bloc<MeasurementsEvent, MeasurementsState> {
       // Simulate a delay for loading measurements
       await Future.delayed(Duration(seconds: 1));
 
-      var measurements = _webSocketService.getMeasurements();
-      emit(MeasurementsState.success(measurements));
+      Map<dynamic, dynamic> measurements =
+          await _webSocketService.getMeasurements();
+
+      if (measurements.isNotEmpty) {
+        emit(MeasurementsState.success(measurements));
+      } else {
+        emit(MeasurementsState.failure());
+      }
     });
     on<LoadMeasurementsSuccess>(
         (event, emit) => emit(MeasurementsState.success(event.measurements)));

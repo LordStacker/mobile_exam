@@ -1,12 +1,11 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../bloc/alerts/alerts_bloc.dart';
 import '../widgets/BottomNavbar.dart';
 
 class Alerts extends StatefulWidget {
-  final RemoteMessage? message;
-
-  const Alerts({super.key, this.message});
+  const Alerts({super.key});
 
   @override
   State<Alerts> createState() => _AlertsState();
@@ -15,9 +14,11 @@ class Alerts extends StatefulWidget {
 class _AlertsState extends State<Alerts> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xffF0F3FF),
-      appBar: AppBar(
+    return BlocProvider(
+      create: (context) => AlertsBloc()..add(const AlertsEvent.started()),
+      child: Scaffold(
+        backgroundColor: Color(0xffF0F3FF),
+        appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Color(0xffF0F3FF)),
             onPressed: () => Navigator.of(context).pop(),
@@ -28,26 +29,53 @@ class _AlertsState extends State<Alerts> {
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Color(0xffF0F3FF),
-          )),
-      body: Center(
-          child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Text(
-              'You have a new notification:',
-            ),
-            Text(
-              '${widget.message?.notification?.title ?? 'No title'}',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            Text(
-              '${widget.message?.notification?.body ?? 'No body'}',
-            ),
-          ],
+          ),
         ),
-      )),
-      bottomNavigationBar: const AppBottomNavigationBar(),
+        bottomNavigationBar: const AppBottomNavigationBar(),
+        body: BlocConsumer<AlertsBloc, AlertsState>(
+          listener: (context, state) {
+            switch (state) {
+              case Initial():
+              // Do nothing for now
+              case Loading():
+                showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (BuildContext context) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          color: Color(0xff15F5BA),
+                        ),
+                      );
+                    });
+              case Display():
+                Navigator.of(context).pop();
+            }
+          },
+          builder: (context, state) {
+            return switch (state) {
+              Initial() || Loading() => Container(),
+              Display(:final messages) => Center(
+                    child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      for (var message in messages)
+                        Card(
+                          child: ListTile(
+                            title: Text(message['title']),
+                            subtitle: Text(message['body']),
+                          ),
+                        ),
+                    ],
+                  ),
+                )),
+              AlertsState() =>
+                const Center(child: Text('Failed to load alerts')),
+            };
+          },
+        ),
+      ),
     );
   }
 }

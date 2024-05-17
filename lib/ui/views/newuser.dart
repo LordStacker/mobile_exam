@@ -124,6 +124,7 @@ class _NewUserState extends State<NewUser> {
                               width: 150,
                               height: 50,
                               child: TextField(
+                                obscureText: true,
                                 controller: passwordController,
                                 decoration: InputDecoration(
                                   fillColor: Color(0xff211951),

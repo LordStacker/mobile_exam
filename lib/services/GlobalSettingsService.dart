@@ -16,6 +16,7 @@ class GlobalSettings {
 
   Map currentUser = {
     'username': '',
+    'id': 0,
   };
 
   void toggleCelsius() {
