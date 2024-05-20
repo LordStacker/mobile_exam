@@ -1,3 +1,4 @@
+import 'package:exam_project/services/NotificationService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -48,6 +49,7 @@ class _AlertsState extends State<Alerts> {
                         ),
                       );
                     });
+
               case Display():
                 Navigator.of(context).pop();
             }
@@ -56,12 +58,26 @@ class _AlertsState extends State<Alerts> {
             return switch (state) {
               Initial() || Loading() => Container(),
               Display() => Center(
-                    child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[],
+                  child: ListView.builder(
+                    itemCount: NotificationService().getMessages().length,
+                    itemBuilder: (context, index) {
+                      final message =
+                          NotificationService().getMessages().elementAt(index);
+                      return Card(
+                        margin: const EdgeInsets.all(10),
+                        elevation: 5,
+                        child: ListTile(
+                            title: Text(message.notification?.title ?? ''),
+                            subtitle: Text(message.notification?.body ?? ''),
+                            tileColor: Color(0xff211951),
+                            textColor: Color(0xffF0F3FF),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            )),
+                      );
+                    },
                   ),
-                )),
+                ),
               AlertsState() =>
                 const Center(child: Text('Failed to load alerts')),
             };

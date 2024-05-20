@@ -58,7 +58,7 @@ class _HumitdityWidgetState extends State<HumitdityWidget> {
                               ),
                               child: Center(
                                 child: Text(
-                                  '${widget.humidity}',
+                                  '${widget.humidity} RH',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,

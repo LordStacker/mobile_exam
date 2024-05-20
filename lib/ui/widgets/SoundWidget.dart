@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SoundWidget extends StatefulWidget {
-  final double sound;
+  final int sound;
 
   const SoundWidget({super.key, required this.sound});
 

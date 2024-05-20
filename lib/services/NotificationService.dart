@@ -1,17 +1,24 @@
+import 'dart:async';
+import 'dart:collection';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 
-import '../main.dart';
+//Message stream controller to notify alerts that a new message was recieved
+final _messageController = StreamController<RemoteMessage>.broadcast();
 
 Future<void> handleBackgroundMessage(RemoteMessage message) async {
-  print('Title: ${message.notification?.title}');
-  print('Body: ${message.notification?.body}');
-  print('Payload: ${message.data}');
+  handleMessage(message);
+}
+
+Future<void> handleForegroundMessage(RemoteMessage message) async {
+  handleMessage(message);
+  // Add message to stream
+  _messageController.add(message);
 }
 
 void handleMessage(RemoteMessage? message) {
   if (message == null) return;
-
-  navigatorKey.currentState?.pushNamed('/alerts', arguments: message);
+  NotificationService().addMessage(message);
 }
 
 Future initPushNotifications() async {
@@ -24,7 +31,10 @@ Future initPushNotifications() async {
   FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
   FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
   FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
+  FirebaseMessaging.onMessage.listen(handleForegroundMessage);
 }
+
+final Queue<RemoteMessage> _messages = Queue<RemoteMessage>();
 
 class NotificationService {
   NotificationService._privateConstructor();
@@ -38,10 +48,23 @@ class NotificationService {
 
   final _firebaseMessaging = FirebaseMessaging.instance;
 
+  Stream<RemoteMessage> get messageStream => _messageController.stream;
+
   Future<void> initNotifications() async {
     await _firebaseMessaging.requestPermission();
     final token = await _firebaseMessaging.getToken();
     print('Token: $token');
     initPushNotifications();
+  }
+
+  addMessage(RemoteMessage message) {
+    _messages.add(message);
+    if (_messages.length > 10) {
+      _messages.removeFirst();
+    }
+  }
+
+  getMessages() {
+    return _messages;
   }
 }
