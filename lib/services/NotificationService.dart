@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:collection';
 
+import 'package:exam_project/services/GlobalSettingsService.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 //Message stream controller to notify alerts that a new message was recieved
@@ -13,11 +14,14 @@ Future<void> handleBackgroundMessage(RemoteMessage message) async {
 Future<void> handleForegroundMessage(RemoteMessage message) async {
   handleMessage(message);
   // Add message to stream
-  _messageController.add(message);
+
+  if (GlobalSettings().enableNotifications) {
+    _messageController.add(message);
+  }
 }
 
 void handleMessage(RemoteMessage? message) {
-  if (message == null) return;
+  if (message == null || !GlobalSettings().enableNotifications) return;
   NotificationService().addMessage(message);
 }
 
