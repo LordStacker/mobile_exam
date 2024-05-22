@@ -13,7 +13,6 @@ Future<void> handleBackgroundMessage(RemoteMessage message) async {
 
 Future<void> handleForegroundMessage(RemoteMessage message) async {
   handleMessage(message);
-  // Add message to stream
 
   if (GlobalSettings().enableNotifications) {
     _messageController.add(message);
@@ -22,6 +21,7 @@ Future<void> handleForegroundMessage(RemoteMessage message) async {
 
 void handleMessage(RemoteMessage? message) {
   if (message == null || !GlobalSettings().enableNotifications) return;
+
   NotificationService().addMessage(message);
 }
 
