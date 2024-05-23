@@ -71,4 +71,8 @@ class NotificationService {
   getMessages() {
     return _messages;
   }
+
+  removeMessage(String title) {
+    _messages.removeWhere((element) => element.notification?.title == title);
+  }
 }

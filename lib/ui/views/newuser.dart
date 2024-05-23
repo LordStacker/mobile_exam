@@ -59,15 +59,15 @@ class _NewUserState extends State<NewUser> {
         }
       }, builder: (context, state) {
         return Scaffold(
-          backgroundColor: Color(0xffF0F3FF),
+          backgroundColor: const Color(0xffF0F3FF),
           appBar: AppBar(
               leading: IconButton(
-                icon: Icon(Icons.arrow_back, color: Color(0xffF0F3FF)),
+                icon: const Icon(Icons.arrow_back, color: Color(0xffF0F3FF)),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              backgroundColor: Color(0xff211951),
-              title: Text('Create a new account'),
-              titleTextStyle: TextStyle(
+              backgroundColor: const Color(0xff211951),
+              title: const Text('Create a new account'),
+              titleTextStyle: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Color(0xffF0F3FF),
@@ -76,7 +76,7 @@ class _NewUserState extends State<NewUser> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
+                SizedBox(
                   height: 300,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,23 +89,23 @@ class _NewUserState extends State<NewUser> {
                               width: 50,
                               height: 50,
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               height: 50,
                               child: TextField(
                                 controller: usernameController,
                                 decoration: InputDecoration(
-                                  fillColor: Color(0xff211951),
+                                  fillColor: const Color(0xff211951),
                                   filled: true,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   labelText: 'Username',
-                                  labelStyle: TextStyle(
+                                  labelStyle: const TextStyle(
                                     color: Color(0xffF0F3FF),
                                   ),
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Color(0xffF0F3FF),
                                 ),
                               ),
@@ -120,24 +120,24 @@ class _NewUserState extends State<NewUser> {
                               width: 50,
                               height: 50,
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               height: 50,
                               child: TextField(
                                 obscureText: true,
                                 controller: passwordController,
                                 decoration: InputDecoration(
-                                  fillColor: Color(0xff211951),
+                                  fillColor: const Color(0xff211951),
                                   filled: true,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   labelText: 'Password',
-                                  labelStyle: TextStyle(
+                                  labelStyle: const TextStyle(
                                     color: Color(0xffF0F3FF),
                                   ),
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Color(0xffF0F3FF),
                                 ),
                               ),
@@ -152,23 +152,23 @@ class _NewUserState extends State<NewUser> {
                               width: 50,
                               height: 50,
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               height: 50,
                               child: TextField(
                                 controller: emailController,
                                 decoration: InputDecoration(
-                                  fillColor: Color(0xff211951),
+                                  fillColor: const Color(0xff211951),
                                   filled: true,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   labelText: 'Email',
-                                  labelStyle: TextStyle(
+                                  labelStyle: const TextStyle(
                                     color: Color(0xffF0F3FF),
                                   ),
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Color(0xffF0F3FF),
                                 ),
                               ),
@@ -199,7 +199,7 @@ class _NewUserState extends State<NewUser> {
                                   );
                                 }
                               },
-                              child: Text(
+                              child: const Text(
                                 'Create User!',
                                 style: TextStyle(
                                     fontSize: 30,
@@ -217,7 +217,7 @@ class _NewUserState extends State<NewUser> {
           ),
           bottomNavigationBar: Container(
             // This is the footer
-            color: Color(0xff211951),
+            color: const Color(0xff211951),
             height: 50.0,
             alignment: Alignment.center,
           ),

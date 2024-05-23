@@ -18,11 +18,11 @@ void main() async {
   runApp(MaterialApp(
     initialRoute: '/login', // This is the route that the app will start on
     routes: {
-      '/measurements': (context) => Measurements(), // Home route
-      '/login': (context) => Login(), // Login route
-      '/newuser': (context) => NewUser(), // New User route
-      '/alerts': (context) => Alerts(), // Alerts route
-      '/settings': (context) => Settings(), // Settings route
+      '/measurements': (context) => const Measurements(), // Home route
+      '/login': (context) => const Login(), // Login route
+      '/newuser': (context) => const NewUser(), // New User route
+      '/alerts': (context) => const Alerts(), // Alerts route
+      '/settings': (context) => const Settings(), // Settings route
     },
   ));
 }

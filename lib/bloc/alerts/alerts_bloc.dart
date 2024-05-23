@@ -18,6 +18,6 @@ class AlertsBloc extends Bloc<AlertsEvent, AlertsState> {
       await Future.delayed(const Duration(seconds: 1));
       add(const Recieved());
     });
-    on<Recieved>((event, emit) => emit(AlertsState.display()));
+    on<Recieved>((event, emit) => emit(const AlertsState.display()));
   }
 }

@@ -10,7 +10,7 @@ class AppBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       // This is the footer
-      color: Color(0xff211951),
+      color: const Color(0xff211951),
       height: 63.0,
       alignment: Alignment.center,
       child: Row(

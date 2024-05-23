@@ -20,15 +20,15 @@ class _MeasurementsState extends State<Measurements> {
     return BlocProvider(
       create: (context) => MeasurementsBloc()..initialize(),
       child: Scaffold(
-        backgroundColor: Color(0xffF0F3FF),
+        backgroundColor: const Color(0xffF0F3FF),
         appBar: AppBar(
             leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: Color(0xffF0F3FF)),
+              icon: const Icon(Icons.arrow_back, color: Color(0xffF0F3FF)),
               onPressed: () => Navigator.of(context).pop(),
             ),
-            backgroundColor: Color(0xff211951),
-            title: Text('Environment Measurements'),
-            titleTextStyle: TextStyle(
+            backgroundColor: const Color(0xff211951),
+            title: const Text('Environment Measurements'),
+            titleTextStyle: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Color(0xffF0F3FF),

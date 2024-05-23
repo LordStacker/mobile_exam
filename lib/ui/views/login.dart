@@ -7,7 +7,7 @@ import '../../services/InputValidatorService.dart';
 import 'newuser.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
@@ -60,11 +60,11 @@ class _LoginState extends State<Login> {
         }
       }, builder: (context, state) {
         return Scaffold(
-          backgroundColor: Color(0xffF0F3FF),
+          backgroundColor: const Color(0xffF0F3FF),
           appBar: AppBar(
-              backgroundColor: Color(0xff211951),
-              title: Text('Welcome, please log in'),
-              titleTextStyle: TextStyle(
+              backgroundColor: const Color(0xff211951),
+              title: const Text('Welcome, please log in'),
+              titleTextStyle: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Color(0xffF0F3FF),
@@ -73,7 +73,7 @@ class _LoginState extends State<Login> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
+                SizedBox(
                   height: 300,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,23 +86,23 @@ class _LoginState extends State<Login> {
                               width: 50,
                               height: 50,
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               height: 50,
                               child: TextField(
                                 controller: usernameController,
                                 decoration: InputDecoration(
-                                  fillColor: Color(0xff211951),
+                                  fillColor: const Color(0xff211951),
                                   filled: true,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   labelText: 'Username',
-                                  labelStyle: TextStyle(
+                                  labelStyle: const TextStyle(
                                     color: Color(0xffF0F3FF),
                                   ),
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Color(0xffF0F3FF),
                                 ),
                               ),
@@ -117,24 +117,24 @@ class _LoginState extends State<Login> {
                               width: 50,
                               height: 50,
                             ),
-                            Container(
+                            SizedBox(
                               width: 150,
                               height: 50,
                               child: TextField(
                                 controller: passwordController,
                                 obscureText: true,
                                 decoration: InputDecoration(
-                                  fillColor: Color(0xff211951),
+                                  fillColor: const Color(0xff211951),
                                   filled: true,
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
                                   labelText: 'Password',
-                                  labelStyle: TextStyle(
+                                  labelStyle: const TextStyle(
                                     color: Color(0xffF0F3FF),
                                   ),
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Color(0xffF0F3FF),
                                 ),
                               ),
@@ -164,7 +164,7 @@ class _LoginState extends State<Login> {
                                   );
                                 }
                               },
-                              child: Text(
+                              child: const Text(
                                 'Log In',
                                 style: TextStyle(
                                     fontSize: 30,
@@ -178,10 +178,10 @@ class _LoginState extends State<Login> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => NewUser()),
+                                      builder: (context) => const NewUser()),
                                 );
                               },
-                              child: Text(
+                              child: const Text(
                                 'New User?',
                                 style: TextStyle(
                                     fontSize: 13,
@@ -199,7 +199,7 @@ class _LoginState extends State<Login> {
           ),
           bottomNavigationBar: Container(
             // This is the footer
-            color: Color(0xff211951),
+            color: const Color(0xff211951),
             height: 50.0,
             alignment: Alignment.center,
           ),

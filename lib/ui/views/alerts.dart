@@ -18,15 +18,15 @@ class _AlertsState extends State<Alerts> {
     return BlocProvider(
       create: (context) => AlertsBloc()..add(const AlertsEvent.started()),
       child: Scaffold(
-        backgroundColor: Color(0xffF0F3FF),
+        backgroundColor: const Color(0xffF0F3FF),
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Color(0xffF0F3FF)),
+            icon: const Icon(Icons.arrow_back, color: Color(0xffF0F3FF)),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Color(0xff211951),
-          title: Text('Alerts'),
-          titleTextStyle: TextStyle(
+          backgroundColor: const Color(0xff211951),
+          title: const Text('Alerts'),
+          titleTextStyle: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Color(0xffF0F3FF),
@@ -63,17 +63,22 @@ class _AlertsState extends State<Alerts> {
                     itemBuilder: (context, index) {
                       final message =
                           NotificationService().getMessages().elementAt(index);
-                      return Card(
-                        margin: const EdgeInsets.all(10),
-                        elevation: 5,
-                        child: ListTile(
-                            title: Text(message.notification?.title ?? ''),
-                            subtitle: Text(message.notification?.body ?? ''),
-                            tileColor: Color(0xff211951),
-                            textColor: Color(0xffF0F3FF),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            )),
+                      return Dismissible(
+                        key: Key(index.toString()),
+                        onDismissed: (direction) => NotificationService()
+                            .removeMessage(message.notification?.title ?? ''),
+                        child: Card(
+                          margin: const EdgeInsets.all(10),
+                          elevation: 5,
+                          child: ListTile(
+                              title: Text(message.notification?.title ?? ''),
+                              subtitle: Text(message.notification?.body ?? ''),
+                              tileColor: const Color(0xff211951),
+                              textColor: const Color(0xffF0F3FF),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
+                        ),
                       );
                     },
                   ),
