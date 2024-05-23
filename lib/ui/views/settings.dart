@@ -14,21 +14,21 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF0F3FF),
+      backgroundColor: const Color(0xffF0F3FF),
       appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Color(0xffF0F3FF)),
+            icon: const Icon(Icons.arrow_back, color: Color(0xffF0F3FF)),
             onPressed: () => Navigator.of(context).pop(),
           ),
-          backgroundColor: Color(0xff211951),
-          title: Text('Settings'),
-          titleTextStyle: TextStyle(
+          backgroundColor: const Color(0xff211951),
+          title: const Text('Settings'),
+          titleTextStyle: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Color(0xffF0F3FF),
           )),
       body: Center(
-          child: Container(
+          child: SizedBox(
         height: 450,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -36,13 +36,13 @@ class _SettingsState extends State<Settings> {
             Container(
               width: 300,
               decoration: BoxDecoration(
-                color: Color(0xff211951),
+                color: const Color(0xff211951),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('Use Celsius',
+                  const Text('Use Celsius',
                       style: TextStyle(color: Color(0xffF0F3FF), fontSize: 20)),
                   Switch(
                     value: GlobalSettings().isCelsius,
@@ -51,8 +51,8 @@ class _SettingsState extends State<Settings> {
                         GlobalSettings().toggleCelsius();
                       });
                     },
-                    activeTrackColor: Color(0xff15F5BA),
-                    activeColor: Color(0xffF0F3FF),
+                    activeTrackColor: const Color(0xff15F5BA),
+                    activeColor: const Color(0xffF0F3FF),
                   ),
                 ],
               ),
@@ -60,13 +60,13 @@ class _SettingsState extends State<Settings> {
             Container(
               width: 300,
               decoration: BoxDecoration(
-                color: Color(0xff211951),
+                color: const Color(0xff211951),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('Use 24 Hour Time',
+                  const Text('Use 24 Hour Time',
                       style: TextStyle(color: Color(0xffF0F3FF), fontSize: 20)),
                   Switch(
                     value: GlobalSettings().is24Hour,
@@ -75,8 +75,8 @@ class _SettingsState extends State<Settings> {
                         GlobalSettings().toggle24Hour();
                       });
                     },
-                    activeTrackColor: Color(0xff15F5BA),
-                    activeColor: Color(0xffF0F3FF),
+                    activeTrackColor: const Color(0xff15F5BA),
+                    activeColor: const Color(0xffF0F3FF),
                   ),
                 ],
               ),
@@ -84,13 +84,13 @@ class _SettingsState extends State<Settings> {
             Container(
               width: 300,
               decoration: BoxDecoration(
-                color: Color(0xff211951),
+                color: const Color(0xff211951),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('Enable Alerts',
+                  const Text('Enable Alerts',
                       style: TextStyle(color: Color(0xffF0F3FF), fontSize: 20)),
                   Switch(
                     value: GlobalSettings().enableNotifications,
@@ -99,8 +99,8 @@ class _SettingsState extends State<Settings> {
                         GlobalSettings().toggleNotifications();
                       });
                     },
-                    activeTrackColor: Color(0xff15F5BA),
-                    activeColor: Color(0xffF0F3FF),
+                    activeTrackColor: const Color(0xff15F5BA),
+                    activeColor: const Color(0xffF0F3FF),
                   ),
                 ],
               ),

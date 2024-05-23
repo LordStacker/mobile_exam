@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:exam_project/services/GlobalSettingsService.dart';
 import 'package:web_socket_channel/io.dart';
 
 import 'JsonService.dart';
@@ -11,8 +12,9 @@ class WebSocketService {
   final String url = 'ws://10.0.2.2:8181/';
   IOWebSocketChannel? _channel;
 
-  //This completer is used to complete the signing functions when the server responds
-  Completer<bool>? _signInCompleter;
+  //This completer is used to complete the functions when the server responds
+  Completer<bool>? _completer;
+  Completer<Map>? _measurementsCompleter;
 
   //This function connects to the WebSocket server and outputs messages to the handleEvent() function
   Future<void> connect() async {
@@ -34,14 +36,14 @@ class WebSocketService {
       await connect();
     }
 
-    _signInCompleter = Completer<bool>();
+    _completer = Completer<bool>();
     _channel!.sink.add(JsonService().serialiseJson({
       'eventType': 'ClientWantsToSignIn',
       'Username': username,
       'Password': password,
     }));
 
-    return _signInCompleter!.future;
+    return _completer!.future;
   }
 
   //This function sends a message to the WebSocket server to register a new user
@@ -50,7 +52,7 @@ class WebSocketService {
       await connect();
     }
 
-    _signInCompleter = Completer<bool>();
+    _completer = Completer<bool>();
     _channel!.sink.add(JsonService().serialiseJson({
       'eventType': 'ClientWantsToRegister',
       'Username': username,
@@ -58,11 +60,21 @@ class WebSocketService {
       'Email': email,
     }));
 
-    return _signInCompleter!.future;
+    return _completer!.future;
   }
 
-  Map getMeasurements() {
-    return JsonService().deserialiseJson(JsonService().testJsonMeasurements);
+  Future<Map<dynamic, dynamic>> getMeasurements() async {
+    if (!isConnected()) {
+      await connect();
+    }
+
+    _measurementsCompleter = Completer<Map>();
+    _channel!.sink.add(JsonService().serialiseJson({
+      'eventType': 'ClientWantsToGetSensorByUserId',
+      'userId': GlobalSettings().currentUser['id']
+    }));
+
+    return _measurementsCompleter!.future;
   }
 
   //This function handles the events recieved from the WebSocket server and returns the response
@@ -70,10 +82,24 @@ class WebSocketService {
     var event = jsonDecode(message);
     switch (event['eventType']) {
       case 'ServerConfirmsSignIn':
-        _signInCompleter?.complete(true);
+        GlobalSettings().currentUser['username'] = event['Username'];
+        GlobalSettings().currentUser['id'] = event['user_id'];
+        _completer?.complete(true);
         break;
-      case 'ServerError':
-        _signInCompleter?.complete(false);
+      case 'WrongCredentialsEvent':
+        _completer?.complete(false);
+        break;
+      case 'UserCreatedSuccessfully':
+        _completer?.complete(true);
+        break;
+      case 'FailedRegisterUserExist':
+        _completer?.complete(false);
+        break;
+      case 'SensorReadRetrieved':
+        _measurementsCompleter?.complete(event['Sensor']);
+        break;
+      case 'SensorReadFailed':
+        _measurementsCompleter?.complete({});
         break;
     }
   }

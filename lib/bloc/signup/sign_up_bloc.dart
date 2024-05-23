@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -14,12 +16,17 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<Started>((event, emit) => emit(const SignUpState.initial()));
     on<Submitted>((event, emit) async {
       emit(const SignUpState.loading());
-      bool success = await _webSocketService.signUp(
-          event.username, event.password, event.email);
+      try {
+        bool success = await _webSocketService
+            .signUp(event.username, event.password, event.email)
+            .timeout(const Duration(seconds: 7));
 
-      if (success) {
-        emit(const SignUpState.success());
-      } else {
+        if (success) {
+          emit(const SignUpState.success());
+        } else {
+          emit(const SignUpState.error());
+        }
+      } on TimeoutException {
         emit(const SignUpState.error());
       }
     });

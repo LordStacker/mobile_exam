@@ -23,23 +23,23 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
-      child: Container(
+      child: SizedBox(
         height: 120,
         width: 300,
         child: Scaffold(
-            backgroundColor: Color(0xff211951),
+            backgroundColor: const Color(0xff211951),
             body: Center(
               child: Container(
                 height: 120,
                 width: 300,
                 decoration: BoxDecoration(
-                  color: Color(0xff211951),
+                  color: const Color(0xff211951),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Text(
+                      const Text(
                         'Room Temperature',
                         style: TextStyle(
                           fontSize: 20,
@@ -47,7 +47,7 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
                           color: Color(0xffF0F3FF),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: 250,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,15 +59,15 @@ class _TemperatureWidgetState extends State<TemperatureWidget> {
                             ),
                             Container(
                               width: 100,
-                              padding: EdgeInsets.all(7),
+                              padding: const EdgeInsets.all(7),
                               decoration: BoxDecoration(
-                                color: Color(0xff615B85),
+                                color: const Color(0xff615B85),
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: Center(
                                 child: Text(
-                                  '${processTemperature()}',
-                                  style: TextStyle(
+                                  processTemperature(),
+                                  style: const TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                     color: Color(0xffF0F3FF),
