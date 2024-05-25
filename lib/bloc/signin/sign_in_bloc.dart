@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:exam_project/services/GlobalSettingsService.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../services/WebSocketService.dart';
@@ -37,7 +38,17 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         emit(const SignInState.error());
       }
     });
-    on<Confirmed>((event, emit) => emit(const SignInState.success()));
+    on<Confirmed>((event, emit) async {
+      if (GlobalSettings().enableNotifications) {
+        bool tokenRes = await _webSocketService.addToken();
+
+        if (!tokenRes) {
+          emit(const SignInState.error());
+          return;
+        }
+      }
+      emit(const SignInState.success());
+    });
     on<Failure>((event, emit) => emit(const SignInState.error()));
   }
 }

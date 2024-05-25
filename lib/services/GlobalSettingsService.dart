@@ -19,6 +19,8 @@ class GlobalSettings {
     'id': 0,
   };
 
+  String? token = '';
+
   void toggleCelsius() {
     isCelsius = !isCelsius;
   }

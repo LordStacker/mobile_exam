@@ -1,3 +1,4 @@
+import 'package:exam_project/services/GlobalSettingsService.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -11,7 +12,10 @@ class MeasurementsBloc extends Bloc<MeasurementsEvent, MeasurementsState> {
   final WebSocketService _webSocketService = WebSocketService();
 
   MeasurementsBloc() : super(const MeasurementsState.initial()) {
-    on<Started>((event, emit) => emit(const MeasurementsState.loading()));
+    on<Started>((event, emit) {
+      emit(const MeasurementsState.loading());
+    });
+
     on<LoadMeasurements>((event, emit) async {
       emit(const MeasurementsState.loading());
 

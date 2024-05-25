@@ -57,6 +57,7 @@ class NotificationService {
   Future<void> initNotifications() async {
     await _firebaseMessaging.requestPermission();
     final token = await _firebaseMessaging.getToken();
+    GlobalSettings().token = token;
     print('Token: $token');
     initPushNotifications();
   }
