@@ -27,9 +27,8 @@ Deno.serve(async (req) => {
   const { data } = await supabase
     .from("user_tokens")
     .select("fcm_token")
-    .eq("id", payload.record.user_id)
+    .eq("user_id", payload.record.user_id)
     .single();
-
   const fcmToken = data!.fcm_token as string;
 
   const { default: serviceAccount } = await import("../service-account.json", {
