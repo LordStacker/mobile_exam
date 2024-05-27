@@ -42,5 +42,8 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+/supabase/functions/service-account.json
+/lib/supabase/functions/service-account.json
+
 # Firebase related
 /lib/firebase_options.dart

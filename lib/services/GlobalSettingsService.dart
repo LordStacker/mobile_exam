@@ -32,4 +32,22 @@ class GlobalSettings {
   void toggleNotifications() {
     enableNotifications = !enableNotifications;
   }
+
+  String checkConvertTime(String time) {
+    if (is24Hour) {
+      return time;
+    } else {
+      final timeSplit = time.split(':');
+      final hour = int.parse(timeSplit[0]);
+      final minute = int.parse(timeSplit[1]);
+      final second = int.parse(timeSplit[2]);
+      if (hour > 12) {
+        return '${hour - 12}:${minute.toString().padLeft(2, '0')}:${second.toString().padLeft(2, '0')} PM';
+      } else if (hour == 0) {
+        return '12:${minute.toString().padLeft(2, '0')}:${second.toString().padLeft(2, '0')} AM';
+      } else {
+        return '${hour.toString().padLeft(2, '0')}:${minute.toString().padLeft(2, '0')}:${second.toString().padLeft(2, '0')} AM';
+      }
+    }
+  }
 }

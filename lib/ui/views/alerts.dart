@@ -1,3 +1,4 @@
+import 'package:exam_project/services/GlobalSettingsService.dart';
 import 'package:exam_project/services/NotificationService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,7 +72,8 @@ class _AlertsState extends State<Alerts> {
                           margin: const EdgeInsets.all(10),
                           elevation: 5,
                           child: ListTile(
-                              title: Text(message.notification?.title ?? ''),
+                              title: Text(GlobalSettings().checkConvertTime(
+                                  message.notification?.title)),
                               subtitle: Text(message.notification?.body ?? ''),
                               tileColor: const Color(0xff211951),
                               textColor: const Color(0xffF0F3FF),
