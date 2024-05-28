@@ -14,8 +14,8 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final usernameController = TextEditingController(text: "Test4");
-  final passwordController = TextEditingController(text: "pass1234");
+  final usernameController = TextEditingController(text: "");
+  final passwordController = TextEditingController(text: "");
   final _inputValidator = InputValidator();
 
   @override
