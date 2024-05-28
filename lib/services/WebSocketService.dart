@@ -46,6 +46,22 @@ class WebSocketService {
     return _completer!.future;
   }
 
+  Future<bool> addToken() async {
+    if (!isConnected()) {
+      await connect();
+    }
+
+    _completer = Completer<bool>();
+
+    _channel!.sink.add(JsonService().serialiseJson({
+      'eventType': 'ClientWantsToAddToken',
+      'UserId': GlobalSettings().currentUser['id'],
+      'Token': GlobalSettings().token,
+    }));
+
+    return _completer!.future;
+  }
+
   //This function sends a message to the WebSocket server to register a new user
   Future<bool> signUp(String username, String password, String email) async {
     if (!isConnected()) {
@@ -100,6 +116,12 @@ class WebSocketService {
         break;
       case 'SensorReadFailed':
         _measurementsCompleter?.complete({});
+        break;
+      case 'ServerConfirmsTokenUpsert':
+        _completer?.complete(true);
+        break;
+      case 'ServerError':
+        _completer?.complete(false);
         break;
     }
   }
